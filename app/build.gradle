@@ -1,11 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
 }
 
 android {
     namespace 'com.example.nepogoda'
     compileSdk 33
+
+    applicationVariants.all { variant ->
+        variant.sourceSets.java.each {
+            it.srcDirs += "build/generated/ksp/${variant.name}/kotlin"
+        }
+    }
 
     defaultConfig {
         applicationId "com.example.nepogoda"
@@ -27,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
     buildFeatures {
         compose true
@@ -47,7 +54,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'androidx.activity:activity-compose:1.7.0'
@@ -60,4 +66,17 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+
+    // Orbit
+    def orbitVersion = '4.6.1'
+    implementation("org.orbit-mvi:orbit-viewmodel:$orbitVersion")
+    implementation("org.orbit-mvi:orbit-compose:$orbitVersion")
+    testImplementation("org.orbit-mvi:orbit-test:$orbitVersion")
+
+    // Koin
+    ksp "io.insert-koin:koin-ksp-compiler:1.2.0"
+    implementation "io.insert-koin:koin-annotations:1.2.0"
+    implementation "io.insert-koin:koin-core:3.4.0"
+    implementation "io.insert-koin:koin-android:3.3.3"
+    implementation "io.insert-koin:koin-androidx-compose:3.3.0"
 }
