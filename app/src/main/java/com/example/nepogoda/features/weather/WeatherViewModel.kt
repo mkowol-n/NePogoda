@@ -4,8 +4,11 @@ import com.example.nepogoda.features.weather.model.WeatherModel
 import com.example.nepogoda.features.weather.usecase.IWeatherUC
 import com.example.nepogoda.infrastructure.async.Async
 import com.example.nepogoda.infrastructure.async.Uninitialized
+import com.example.nepogoda.infrastructure.async.async
 import com.example.nepogoda.infrastructure.base.BaseViewModel
+import kotlinx.coroutines.delay
 import org.koin.android.annotation.KoinViewModel
+import org.orbitmvi.orbit.syntax.simple.intent
 
 @KoinViewModel
 class WeatherViewModel(
@@ -14,4 +17,13 @@ class WeatherViewModel(
     data class WeatherState(
         val weatherState: Async<WeatherModel> = Uninitialized
     )
+
+    fun getWeather() = intent {
+        async {
+            delay(3000L)
+            WeatherModel("asfasgf")
+        }.execute(cachedValue = state.weatherState) {
+            state.copy(weatherState = it)
+        }
+    }
 }
