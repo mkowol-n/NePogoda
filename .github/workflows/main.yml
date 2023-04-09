@@ -2,7 +2,7 @@ name: Android Unit Tests
 
 on:
   pull_request:
-    branches: [ prod ]
+    branches: [ prod,develop ]
 
 jobs:
   build:
