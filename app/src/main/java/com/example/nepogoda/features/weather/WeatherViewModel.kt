@@ -6,7 +6,6 @@ import com.example.nepogoda.infrastructure.async.Async
 import com.example.nepogoda.infrastructure.async.Uninitialized
 import com.example.nepogoda.infrastructure.async.async
 import com.example.nepogoda.infrastructure.base.BaseViewModel
-import kotlinx.coroutines.delay
 import org.koin.android.annotation.KoinViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
 
@@ -20,8 +19,7 @@ class WeatherViewModel(
 
     fun getWeather() = intent {
         async {
-            delay(3000L)
-            WeatherModel("asfasgf")
+            weatherUC.invoke(city = "Gliwice")
         }.execute(cachedValue = state.weatherState) {
             state.copy(weatherState = it)
         }
