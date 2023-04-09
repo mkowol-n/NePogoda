@@ -76,6 +76,7 @@ class WeatherViewModelTest {
             states(
                 { copy(weatherState = Loading()) },
                 { copy(weatherState = Fail(error = error)) },
+                { copy(weatherState = Loading()) },
             )
         }
     }
