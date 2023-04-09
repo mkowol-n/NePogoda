@@ -15,7 +15,7 @@ fun NepError(onRetryAction: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Coś poszło nie tak")
+        Text(text = "Coś poszło nie tak.")
         Spacer(modifier = Modifier.height(8.dp))
         Button(onClick = onRetryAction) {
             Text(text = "Ponów")
