@@ -1,0 +1,24 @@
+name: Firebase App Distribution
+on:
+  pull_request:
+    branches: [ prod ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: build debug
+        run: ./gradlew assembleProdDebug
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: 1:535517926548:android:ad5e03c4ae507576db1081
+          service_account_key: 2f9d65eaf058375ed0d4d9187235e0a10e033f4b
+          groups: neptesters
+          file: app/build/outputs/apk/androidTest/prod/debug/app-prod-debug-androidTest.apk

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "535517926548",
+    "project_id": "nepogoda",
+    "storage_bucket": "nepogoda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535517926548:android:ad5e03c4ae507576db1081",
+        "android_client_info": {
+          "package_name": "com.example.nepogoda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535517926548-q6708bqdh9lsgm2jcotf07lp9b5cq6bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAqr8tz0ORIQ64ex1wgb7dDfW33kjqRZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535517926548-q6708bqdh9lsgm2jcotf07lp9b5cq6bc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
