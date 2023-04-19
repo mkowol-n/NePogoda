@@ -19,6 +19,6 @@ jobs:
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: 1:535517926548:android:ad5e03c4ae507576db1081
-          serviceCredentialsFileContent: app/firebase-admin.json
+          service_account_key: 2f9d65eaf058375ed0d4d9187235e0a10e033f4b
           groups: neptesters
           file: app/build/outputs/apk/androidTest/prod/debug/app-prod-debug-androidTest.apk
