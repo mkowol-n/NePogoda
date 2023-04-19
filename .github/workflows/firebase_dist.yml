@@ -1,0 +1,32 @@
+name: Firebase App Distribution
+
+on:
+  pull_request:
+    branches:
+      - prod
+
+jobs:
+  build_and_distribute:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Build and test with Gradle
+        run: ./gradlew assembleDebug
+
+      - name: Distribute app using Firebase App Distribution
+        env:
+          APP_ID: 1:535517926548:android:ad5e03c4ae507576db1081
+          TOKEN: 2f9d65eaf058375ed0d4d9187235e0a10e033f4b
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2
+        with:
+          appId: 1:535517926548:android:ad5e03c4ae507576db1081
+          token: 2f9d65eaf058375ed0d4d9187235e0a10e033f4b
+          apkPath: app/build/outputs/apk/debug/app-debug.apk
+          releaseNotes: "New release"
