@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: firebase/firebase-action@v1.1.0
         with:
-          args: appdistribution:distribute ./path/to/your/app.apk --release-notes "Release notes here" --group "Group name here" --app "Your app's app ID here" --token 2f9d65eaf058375ed0d4d9187235e0a10e033f4b
+          args: appdistribution:distribute ./path/to/your/app.apk --release-notes "Release notes here" --group neptesters --app com.example.nepogoda --token 2f9d65eaf058375ed0d4d9187235e0a10e033f4b
